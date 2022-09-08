@@ -32,8 +32,8 @@ export class DashboardComponent implements OnInit{
 
   // @ts-ignore
   @ViewChild(MatPaginator) paginator: MatPaginator;
-  isChecked: any = "A";
   checkedRows: any = [];
+  checkedRowsIndexes: any = [];
 
   constructor(private postService: PostServiceService, public dialog: MatDialog) {
 
@@ -48,16 +48,14 @@ export class DashboardComponent implements OnInit{
 
   }
 
-  checkValue(event: any){
-    console.log(event);
-  }
-
-  addOrRemoveRow(data:any,event: any) {
-    let index = this.checkedRows.indexOf(data.id)
+  addOrRemoveRow(id:number,data:any,event: any) {
+    let index = this.checkedRowsIndexes.indexOf(id)
     if (index === -1) {
+      this.checkedRowsIndexes.push(id);
       this.checkedRows.push(data)
     } else {
-      this.checkedRows.splice(this.checkedRows.indexOf(data), 1)
+      this.checkedRowsIndexes.splice(index, 1)
+      this.checkedRows.splice(index, 1)
     }
   }
 
