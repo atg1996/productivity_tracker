@@ -1,0 +1,59 @@
+<style>
+input {
+  margin-left: 10px;
+}
+
+  label {
+    margin-left: 10px;
+  }
+
+
+</style>
+
+
+<!--<div *ngIf="data.checkedRows.length == 0" align="center">List is Empty</div>
+
+<div *ngFor="let row of data.checkedRows">
+<h1 mat-dialog-title>Edit employee profile</h1>
+<div mat-dialog-content>{{row.id}}
+</div>
+  <br>
+  <div>
+    <label for="name">Employee Name</label>
+    <input id="name" name="name" type="text" placeholder="{{row.name}}">
+  </div>
+
+<div mat-dialog-actions>
+  <button mat-button mat-dialog-close cdkFocusInitial>Save</button>
+</div>
+  <br>
+  <mat-divider></mat-divider>
+</div>-->
+<div *ngIf="data.checkedRows.length == 0" align="center">List is Empty</div>
+
+<h1 mat-dialog-title *ngIf="data.checkedRows.length != 0" >Edit employee profile(s)</h1>
+
+<form [formGroup]="employeeForm">
+  <div *ngFor="let row of data.checkedRows">
+  <label for="first-name">Name: </label>
+  <input id="first-name" type="text" formControlName="employeeName" placeholder="{{row.name}}">
+
+  <label for="email">Email: </label>
+  <input id="email" type="text" formControlName="employeeEmail" placeholder="{{row.email}}">
+
+  <label for="hourly-rate">Hourly Rate: </label>
+  <input id="hourly-rate" type="text" formControlName="employeeHourlyRate" placeholder="{{row.hourly_rate}}">
+
+  <label for="overtime-hourly-rate">Overtime Hourly Rate: </label>
+  <input id="overtime-hourly-rate" type="text" formControlName="employeeOvertimeHourlyRate" placeholder="{{row.overtime_hourly_rate}}">
+
+    <br>
+    <br>
+    <mat-divider></mat-divider>
+    <br>
+  </div>
+
+</form>
+
+
+
